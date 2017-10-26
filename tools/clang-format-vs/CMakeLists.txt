@@ -18,7 +18,7 @@ if (BUILD_CLANG_FORMAT_VS_PLUGIN)
 
   add_custom_target(clang_format_vsix ALL
       COMMAND ${NUGET_EXE} restore "${CMAKE_CURRENT_SOURCE_DIR}/ClangFormat.sln"
-      COMMAND devenv "${CMAKE_CURRENT_SOURCE_DIR}/ClangFormat.sln" /Build Release
+      COMMAND msbuild "${CMAKE_CURRENT_SOURCE_DIR}/ClangFormat.sln" /p:Configuration=Release
       DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/ClangFormat/source.extension.vsixmanifest"
       COMMAND ${CMAKE_COMMAND} -E copy_if_different
       "${CMAKE_CURRENT_SOURCE_DIR}/ClangFormat/bin/Release/ClangFormat.vsix"
